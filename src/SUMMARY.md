@@ -68,3 +68,12 @@
     - [Using Modules](./chapter-7/using-modules.md)
         - [Find Modules](./chapter-7/find-modules.md)
         - [Utility Modules](./chapter-7/utility-modules.md)
+
+- [Installing Files](./chapter-8/README.md)
+    - [Installing Targets](./chapter-8/installing-targets.md)
+    - [Installing Files](./chapter-8/installing-files.md)
+    - [Installing Programs](./chapter-8/installing-programs.md)
+    - [Installing Directories](./chapter-8/installing-directories.md)
+    - [Installing Scripts](./chapter-8/installing-scripts.md)
+    - [Installing Code](./chapter-8/installing-code.md)
+    - [Installing Prerequisite Shared Libraries](./chapter-8/installing-prerequisite.md)
