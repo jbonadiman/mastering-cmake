@@ -1,0 +1,4 @@
+# Editing CMakeLists Files
+CMakeLists files can be edited in almost any text editor. Some editors, such as Notepad++, come with CMake syntax highlighting and indentation support built-in. For editors such as Emacs or Vim, CMake includes indentation and syntax highlighting modes. These can be found in the `Auxiliary` directory of the source distribution, or downloaded from the CMake [Download](https://cmake.org/cmake/help/book/mastering-cmake/chapter/www.cmake.org/download) page.
+
+Within any of the supported generators (Makefiles, Visual Studio, etc.), if you edit a CMakeLists file and rebuild, there are rules that will automatically invoke CMake to update the generated files (e.g. Makefiles or project files) as required. This helps to assure that your generated files are always in sync with your CMakeLists files.
