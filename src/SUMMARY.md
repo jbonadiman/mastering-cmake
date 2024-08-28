@@ -38,3 +38,6 @@
         - [Procedure Definitions](./chapter-3/procedure-definitions.md)
     - [Regular Expressions](./chapter-3/regular-expressions.md)
     - [Advanced Commands](./chapter-3/advanced-commands.md)
+
+- [CMake Cache](./chapter-4/README.md)
+    - [Setting Initial Values for CMake](./chapter-4/setting-initial-values.md)
