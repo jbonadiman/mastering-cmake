@@ -1,0 +1,6 @@
+[book]
+authors = ["Ken Martin", "Bill Hoffman"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Mastering CMake"
