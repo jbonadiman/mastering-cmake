@@ -1,0 +1,2 @@
+# Source Files
+The source file structure is in many ways similar to a target. It stores the filename, extension, and a number of general properties related to a source file. Like targets, you can set and get properties using [`set_source_files_properties`](https://cmake.org/cmake/help/latest/command/set_source_files_properties.html#command:set_source_files_properties) and [`get_source_file_property`](https://cmake.org/cmake/help/latest/command/get_source_file_property.html#command:get_source_file_property), or the more generic versions.

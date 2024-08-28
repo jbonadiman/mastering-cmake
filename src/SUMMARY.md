@@ -41,3 +41,11 @@
 
 - [CMake Cache](./chapter-4/README.md)
     - [Setting Initial Values for CMake](./chapter-4/setting-initial-values.md)
+
+- [Key Concepts](./chapter-5/README.md)
+    - [Targets](./chapter-5/targets.md)
+    - [Usage Requirements](./chapter-5/usage-requirements.md)
+    - [Specifying Optimized or Debug Libraries with a Target](./chapter-5/specify-optimized-debug-lib.md)
+    - [Object Libraries](./chapter-5/object-libraries.md)
+    - [Source Files](./chapter-5/source-files.md)
+    - [Directories, Tests, and Properties](./chapter-5/dirs-tests-props.md)
