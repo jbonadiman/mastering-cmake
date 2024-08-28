@@ -63,3 +63,8 @@
         - [Updating the Project Policy Version](./chapter-6/update-project-policy-version.md)
         - [Supporting Multiple CMake Versions](./chapter-6/support-multiple-cmake-versions.md)
             - [Checking Versions of CMake](./chapter-6/checking-versions-cmake.md)
+
+- [Modules](./chapter-7/README.md)
+    - [Using Modules](./chapter-7/using-modules.md)
+        - [Find Modules](./chapter-7/find-modules.md)
+        - [Utility Modules](./chapter-7/utility-modules.md)

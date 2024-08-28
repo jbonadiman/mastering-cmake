@@ -1,0 +1,2 @@
+# Find Modules
+These modules support the [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html#command:find_package) command to determine the location of software elements, such as header files or libraries, that belong to a given package. Do not include them directly. Use the [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html#command:find_package) command. Each module comes with documentation describing the package it finds and the variables in which it provides results.
