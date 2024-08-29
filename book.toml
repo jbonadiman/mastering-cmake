@@ -8,3 +8,11 @@ title = "Mastering CMake"
 
 [output.html]
 site-url = "/mastering-cmake/"
+git-repository-url = "https://github.com/jbonadiman/mastering-cmake"
+git-repository-icon = "fa-github"
+
+[output.html.print]
+page-break = false
+
+[output.html.fold]
+enable = true
