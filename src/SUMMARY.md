@@ -77,3 +77,9 @@
     - [Installing Scripts](./chapter-8/installing-scripts.md)
     - [Installing Code](./chapter-8/installing-code.md)
     - [Installing Prerequisite Shared Libraries](./chapter-8/installing-prerequisite.md)
+
+- [System Inspection](./chapter-9/README.md)
+    - [Using Header Files and Libraries](./chapter-9/using-header-files-libs.md)
+    - [System Properties](./chapter-9/system-properties.md)
+    - [How to Pass Parameters to a Compilation](./chapter-9/pass-parameters-to-compilation.md)
+    - [How to Configure a Header File](./chapter-9/configure-header-file.md)
