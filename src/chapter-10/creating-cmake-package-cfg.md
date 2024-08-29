@@ -1,6 +1,6 @@
 # Creating CMake Package Configuration Files
 Projects must provide package configuration files so that outside applications can find them. Consider a simple project “Gromit” providing an executable to generate source code and a library against which the generated code must link. The `CMakeLists.txt` file might start with:
-```sh
+```cmake
 cmake_minimum_required(VERSION 3.20)
 project(Gromit C)
 set(version 1.0)
@@ -11,7 +11,7 @@ add_executable(gromit-gen gromit-gen.c)
 ```
 
 In order to install Gromit and export its targets for use by outside projects, add the code:
-```sh
+```cmake
 # Install and export the targets.
 install(FILES gromit.h DESTINATION include/gromit-${version})
 install(TARGETS gromit gromit-gen
@@ -21,7 +21,7 @@ install(EXPORT gromit-targets
         DESTINATION lib/gromit-${version})
 ```
 Finally, Gromit must provide a package configuration file in its installation tree so that outside projects can locate it with [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html#command:find_package):
-```sh
+```cmake
 # Create and install package configuration and version files.
 configure_file(
    ${Gromit_SOURCE_DIR}/pkg/gromit-config.cmake.in
@@ -37,7 +37,7 @@ install(FILES ${Gromit_BINARY_DIR}/pkg/gromit-config.cmake
 ```
 
 This code configures and installs the package configuration file and a corresponding package version file. The package configuration input file `gromit-config.cmake.in` has the code:
-```sh
+```cmake
 # Compute installation prefix relative to this file.
 get_filename_component(_dir "${CMAKE_CURRENT_LIST_FILE}" PATH)
 get_filename_component(_prefix "${_dir}/../.." ABSOLUTE)
@@ -50,7 +50,7 @@ set(gromit_INCLUDE_DIRS "${_prefix}/include/gromit-@version@")
 ```
 
 After installation, the configured package configuration file `gromit-config.cmake` knows the locations of other installed files relative to itself. The corresponding package version file is configured from its input file `gromit-config-version.cmake.in`, which contains code such as:
-```sh
+```cmake
 set(PACKAGE_VERSION "@version@")
 if(NOT "${PACKAGE_FIND_VERSION}" VERSION_GREATER "@version@")
   set(PACKAGE_VERSION_COMPATIBLE 1) # compatible with older
@@ -61,7 +61,7 @@ endif()
 ```
 
 An application that uses the Gromit package might create a CMake file that looks like this:
-```sh
+```cmake
 cmake_minimum_required(VERSION 3.20)
 project(MyProject C)
 
@@ -77,7 +77,7 @@ target_link_libraries(myexe gromit) # link to imported library
 The call to [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html#command:find_package) locates an installation of Gromit or terminates with an error message if none can be found (due to `REQUIRED`). After the command succeeds, the Gromit package configuration file `gromit-config.cmake` has been loaded, so Gromit targets have been imported and variables like `gromit_INCLUDE_DIRS` have been defined.
 
 The above example creates a package configuration file and places it in the `install` tree. One may also create a package configuration file in the `build` tree to allow applications to use the project without installation. In order to do this, one extends Gromit’s CMake file with the code:
-```sh
+```cmake
 # Make project usable from build tree.
 export(TARGETS gromit gromit-gen FILE gromit-targets.cmake)
 configure_file(${Gromit_SOURCE_DIR}/gromit-config.cmake.in
@@ -85,7 +85,7 @@ configure_file(${Gromit_SOURCE_DIR}/gromit-config.cmake.in
 ```
 
 This [`configure_file`](https://cmake.org/cmake/help/latest/command/configure_file.html#command:configure_file) call uses a different input file, `gromit-config.cmake.in`, containing:
-```sh
+```cmake
 # Import the targets.
 include("@Gromit_BINARY_DIR@/gromit-targets.cmake")
 

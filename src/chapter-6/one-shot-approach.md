@@ -1,6 +1,6 @@
 # The One-Shot Approach
 The simplest approach to updating a project for a new version of CMake is simply to change the policy version which is set at the top of the project. Then, try building with the new CMake version to fix problems. For example, to update a project to build with CMake 3.20, one might write
-```sh
+```cmake
 cmake_minimum_required(VERSION 3.20)
 ```
 

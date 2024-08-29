@@ -8,7 +8,7 @@ The `fixup_bundle` function helps you create relocatable install trees. Mac user
 To use `fixup_bundle`, first install one of your executable targets. Then, configure a CMake script that can be called at install time. Inside the configured CMake script, simply [`include`](https://cmake.org/cmake/help/latest/command/include.html#command:include) [`BundleUtilities`](https://cmake.org/cmake/help/latest/module/BundleUtilities.html#module:BundleUtilities) and call the `fixup_bundle` function with appropriate arguments.
 
 In CMakeLists.txt:
-```sh
+```cmake
 install(TARGETS myExecutable DESTINATION bin)
 
 # To install, for example, MSVC runtime libraries:
@@ -25,7 +25,7 @@ install(SCRIPT ${CMAKE_CURRENT_BINARY_DIR}/FixBundle.cmake)
 ```
 
 In FixBundle.cmake.in:
-```sh
+```cmake
 include(BundleUtilities)
 
 # Set bundle to the full path name of the executable already

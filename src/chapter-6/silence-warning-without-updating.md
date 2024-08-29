@@ -1,6 +1,6 @@
 # Silence a Warning Without Updating the Code
 Users can suppress all instances of a warning `CMP<NNNN>` by adding
-```sh
+```cmake
 cmake_policy(SET CMP<NNNN> OLD)
 ```
 

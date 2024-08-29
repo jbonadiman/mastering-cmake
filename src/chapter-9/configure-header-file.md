@@ -1,16 +1,16 @@
 # How to Configure a Header File
 The second approach for passing definitions to the source code is to configure a header file. The header file will include all of the `#define` macros needed to build the project. To configure a file with CMake, the [`configure_file`](https://cmake.org/cmake/help/latest/command/configure_file.html#command:configure_file) command is used. This command requires an input file that is parsed by CMake to produce an output file with all variables expanded or replaced. There are three ways to specify a variable in an input file for [`configure_file`](https://cmake.org/cmake/help/latest/command/configure_file.html#command:configure_file).
-```sh
+```cmake
 #cmakedefine VARIABLE
 ```
 
 If VARIABLE is true, then the result will be:
-```sh
+```cmake
 #define VARIABLE
 ```
 
 If VARIABLE is false, then the result will be:
-```sh
+```cmake
 /* #undef VARIABLE */
 ```
 
@@ -18,7 +18,7 @@ When writing a file to be configured, consider using `@VARIABLE@` instead of `${
 
 The following example configures a .h file for a project that contains preprocessor variables. The first definition indicates if the `FOOBAR` call exists in the library, and the next one contains the path to the build tree.
 
-```sh
+```cmake
 # ---- CMakeLists.txt file-----
 
 # Configure a file from the source tree
@@ -32,7 +32,7 @@ configure_file(
    )
 ```
 
-```sh
+```cmake
 // -----projectConfigure.h.in file------
 /* define a variable to tell the code if the */
 /* foobar call is available on this system */

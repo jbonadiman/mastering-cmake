@@ -42,17 +42,17 @@ Each `Find<XX>.cmake` module defines a set of variables that will allow a projec
 Not all of the variables are present in each of the `FindXX.cmake files`. However, the `<XX>_FOUND` should exist under most circumstances. If `<XX>` is a library, then `<XX>_LIBRARIES` should also be defined, and `<XX>_INCLUDE_DIR` should usually be defined.
 
 Modules can be included in a project either with the [`include`](https://cmake.org/cmake/help/latest/command/include.html#command:include) command or the [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html#command:find_package) command.
-```sh
+```cmake
 find_package(OpenGL)
 ```
 
 is equivalent to:
-```sh
+```cmake
 include(${CMAKE_ROOT}/Modules/FindOpenGL.cmake)
 ```
 
 and
-```sh
+```cmake
 include(FindOpenGL)
 ```
 

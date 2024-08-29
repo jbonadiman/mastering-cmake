@@ -2,7 +2,7 @@
 Many C and C++ programs depend on external libraries; however, when it comes to the practical aspects of compiling and linking a project, taking advantage of existing libraries can be difficult for both developers and users. Problems typically show up as soon as the software is built on a system other than the one on which it was developed. Assumptions regarding where libraries and header files are located become obvious when they are not installed in the same place on the new computer and the build system is unable to find them. CMake has many features to aid developers in the integration of external software libraries into a project.
 
 The CMake commands that are most relevant to this type of integration are the [`find_file`](https://cmake.org/cmake/help/latest/command/find_file.html#command:find_file), [`find_library`](https://cmake.org/cmake/help/latest/command/find_library.html#command:find_library), [`find_path`](https://cmake.org/cmake/help/latest/command/find_path.html#command:find_path), [`find_program`](https://cmake.org/cmake/help/latest/command/find_program.html#command:find_program), and [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html#command:find_package) commands. For most C and C++ libraries, a combination of [`find_library`](https://cmake.org/cmake/help/latest/command/find_library.html#command:find_library) and [`find_path`](https://cmake.org/cmake/help/latest/command/find_path.html#command:find_path) will be enough to compile and link with an installed library. The command [`find_library`](https://cmake.org/cmake/help/latest/command/find_library.html#command:find_library) can be used to locate, or allow a user to locate a library, and [`find_path`](https://cmake.org/cmake/help/latest/command/find_path.html#command:find_path) can be used to find the path to a representative include file from the project. For example, if you wanted to link to the tiff library, you could use the following commands in your CMakeLists.txt file
-```sh
+```cmake
 # find libtiff, looking in some standard places
 find_library(TIFF_LIBRARY
              NAMES tiff tiff2
@@ -23,7 +23,7 @@ target_include_directories(mytiff ${TIFF_INCLUDES})
 ```
 
 The first command used is [`find_library`](https://cmake.org/cmake/help/latest/command/find_library.html#command:find_library), which in this case, will look for a library with the name tiff or tiff2. The [`find_library`](https://cmake.org/cmake/help/latest/command/find_library.html#command:find_library) command only requires the base name of the library without any platform-specific prefixes or suffixes, such as .lib and .dll. The appropriate prefixes and suffixes for the system running CMake will be added to the library name automatically when CMake attempts to find it. All the `FIND_*` commands will look in the `PATH` environment variable. In addition, the commands allow the specification of additional search paths as arguments to be listed after the `PATHS` marker argument. In addition to supporting standard paths, Windows registry entries and environment variables can be used to construct search paths. The syntax for registry entries is the following:
-```sh
+```cmake
 [HKEY_CURRENT_USER\\Software\\Kitware\\Path;Build1]
 ```
 

@@ -1,6 +1,6 @@
 # Utility Modules
 Utility modules are simply sections of CMake commands put into a file; they can then be included into other CMakeLists files using the [`include`](https://cmake.org/cmake/help/latest/command/include.html#command:include) command. For example, the following commands will include the [`CheckTypeSize`](https://cmake.org/cmake/help/latest/module/CheckTypeSize.html#module:CheckTypeSize) module from CMake and then use the macro it defines.
-```sh
+```cmake
 include(CheckTypeSize)
 check_type_size(long SIZEOF_LONG)
 ```

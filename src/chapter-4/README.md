@@ -2,12 +2,12 @@
 The CMake cache may be thought of as a configuration file. The first time CMake is run on a project, it produces a `CMakeCache.txt` file in the top directory of the build tree. CMake uses this file to store a set of global cache variables, whose values persist across multiple runs within a project build tree.
 
 There are a few purposes of this cache. The first is to store the user’s selections and choices, so that if they should run CMake again they will not need to reenter that information. For example, the option command creates a Boolean variable and stores it in the cache.
-```sh
+```cmake
 option(USE_JPEG "Do you want to use the jpeg library")
 ```
 
 The above line would create a variable called `USE_JPEG` and put it into the cache. That way the user can set that variable from the user interface and its value will remain in case the user should run CMake again in the future. To create a variable in the cache, use commands like [`option`](https://cmake.org/cmake/help/latest/command/option.html#command:option), [`find_file`](https://cmake.org/cmake/help/latest/command/find_file.html#command:find_file), or the standard [`set`](https://cmake.org/cmake/help/latest/command/set.html#command:set) command with the `CACHE` option.
-```sh
+```cmake
 set(USE_JPEG ON CACHE BOOL "include jpeg support?")
 ```
 
@@ -24,7 +24,7 @@ Once a variable is in the cache, its “cache” value cannot normally be modifi
 In the rare event that you really want to change a cached variable’s value, use the `FORCE` option in combination with the `CACHE` option to the [`set`](https://cmake.org/cmake/help/latest/command/set.html#command:set) command. The `FORCE` option will cause the [`set`](https://cmake.org/cmake/help/latest/command/set.html#command:set) command to override and change the cache value of a variable.
 
 A few final points should be made concerning variables and their interaction with the cache. If a variable is in the cache, it can still be overridden in a CMakeLists file using the [`set`](https://cmake.org/cmake/help/latest/command/set.html#command:set) command without the `CACHE` option. Cache values are checked when a referenced variable is not defined in the current scope. The [`set`](https://cmake.org/cmake/help/latest/command/set.html#command:set) command will define a variable for the current scope without changing the value in the cache.
-```sh
+```cmake
 # assume that FOO is set to ON in the cache
 
 set(FOO OFF)
@@ -35,7 +35,7 @@ set(FOO OFF)
 Variables that are in the cache also have a property indicating if they are advanced or not. By default, when [`ccmake`](https://cmake.org/cmake/help/latest/manual/ccmake.1.html#manual:ccmake(1)) or the [`cmake-gui`](https://cmake.org/cmake/help/latest/manual/cmake-gui.1.html#manual:cmake-gui(1)) are run, the advanced cache entries are not displayed. This is so the user can focus on the cache entries that they should consider changing. The advanced cache entries are other options that the user can modify, but typically will not. It is not unusual for a large software project to have fifty or more options, and the advanced property lets a software project divide them into key options for most users and advanced options for advanced users. Depending on the project, there may not be any non-advanced cache entries. To make a cache entry advanced, the [`mark_as_advanced`](https://cmake.org/cmake/help/latest/command/mark_as_advanced.html#command:mark_as_advanced) command is used with the name of the variable (a.k.a. cache entry).
 
 In some cases, you might want to restrict a cache entry to a limited set of predefined options. You can do this by setting the [`STRINGS`](https://cmake.org/cmake/help/latest/prop_cache/STRINGS.html#prop_cache:STRINGS) property on the cache entry. The following CMakeLists code illustrates this by creating a property named `CRYPTOBACKEND` as usual, and then setting the `STRINGS` property on it to a set of three options.
-```sh
+```cmake
 set(CRYPTOBACKEND "OpenSSL" CACHE STRING
     "Select a cryptography backend")
 set_property(CACHE CRYPTOBACKEND PROPERTY STRINGS

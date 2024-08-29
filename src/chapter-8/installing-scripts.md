@@ -2,12 +2,12 @@
 Project installations may need to perform tasks other than just placing files in the installation tree. Third-party packages may provide their own mechanisms for registering new plugins that must be invoked during project installation. The `SCRIPT` signature is provided for this purpose.
 
 The `SCRIPT` keyword is immediately followed by the name of a CMake script. CMake will execute the script during installation. If the file name given is a relative path, it will be evaluated with respect to the current source directory. A simple use case is printing a message during installation. We first write a `message.cmake` file containing the code
-```sh
+```cmake
 message("Installing My Project")
 ```
 
 and then reference this script using the command:
-```sh
+```cmake
 install(SCRIPT message.cmake)
 ```
 

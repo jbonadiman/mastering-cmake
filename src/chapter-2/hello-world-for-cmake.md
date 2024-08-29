@@ -1,6 +1,6 @@
 # Hello World for CMake
 To begin, let us consider the simplest possible CMakeLists file. To compile an executable from one source file, the CMakeLists file would contain three lines:
-```sh
+```cmake
 cmake_minimum_required(VERSION 3.20)
 project(Hello)
 add_executable(Hello Hello.c)

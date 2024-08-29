@@ -1,6 +1,6 @@
 # Targets
 Probably the most important item is targets. Targets represent executables, libraries, and utilities built by CMake. Every [`add_library`](https://cmake.org/cmake/help/latest/command/add_library.html#command:add_library), [`add_executable`](https://cmake.org/cmake/help/latest/command/add_executable.html#command:add_executable), and [`add_custom_target`](https://cmake.org/cmake/help/latest/command/add_custom_target.html#command:add_custom_target) command creates a target. For example, the following command will create a target named “foo” that is a static library, with `foo1.c` and `foo2.c` as source files.
-```sh
+```cmake
 add_library(foo STATIC foo1.c foo2.c)
 ```
 

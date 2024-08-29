@@ -4,7 +4,7 @@ The [`macro`](https://cmake.org/cmake/help/latest/command/macro.html#command:mac
 A function in CMake is very much like a function in C or C++. You can pass arguments into it, and they become variables within the function. Likewise, some standard variables such as `ARGC`, `ARGV`, `ARGN`, and `ARGV0`, `ARGV1`, etc. are defined. Function calls have a dynamic scope. Within a function you are in a new variable scope; this is like how you drop into a subdirectory using the [`add_subdirectory`](https://cmake.org/cmake/help/latest/command/add_subdirectory.html#command:add_subdirectory) command and are in a new variable scope. All the variables that were defined when the function was called remain defined, but any changes to variables or new variables only exist within the function. When the function returns, those variables will go away. Put more simply: when you invoke a function, a new variable scope is pushed; when it returns, that variable scope is popped.
 
 The [`function`](https://cmake.org/cmake/help/latest/command/function.html#command:function) command defines a new function. The first argument is the name of the function to define; all additional arguments are formal parameters to the function.
-```sh
+```cmake
 function(DetermineTime _time)
   # pass the result up to whatever invoked this
   set(${_time} "1:23:45" PARENT_SCOPE)
@@ -21,7 +21,7 @@ endif()
 Note that in this example, `_time` is used to pass the name of the return variable. The [`set`](https://cmake.org/cmake/help/latest/command/set.html#command:set) command is invoked with the value of `_time`, which will be `current_time`. Finally, the [`set`](https://cmake.org/cmake/help/latest/command/set.html#command:set) command uses the `PARENT_SCOPE` option to set the variable in the caller’s scope instead of the local scope.
 
 Macros are defined and called in the same manner as functions. The main differences are that a macro does not push and pop a new variable scope, and that the arguments to a macro are not treated as variables but as strings replaced prior to execution. This is very much like the differences between a macro and a function in C or C++. The first argument is the name of the macro to create; all additional arguments are formal parameters to the macro.
-```sh
+```cmake
 # define a simple macro
 macro(assert TEST COMMENT)
   if(NOT ${TEST})
@@ -37,7 +37,7 @@ assert(${FOO_LIB} "Unable to find library foo")
 The simple example above creates a macro called `assert`. The macro is defined into two arguments; the first is a value to test and the second is a comment to print out if the test fails. The body of the macro is a simple [`if`](https://cmake.org/cmake/help/latest/command/if.html#command:if) command with a [`message`](https://cmake.org/cmake/help/latest/command/message.html#command:message) command inside of it. The macro body ends when the [`endmacro`](https://cmake.org/cmake/help/latest/command/endmacro.html#command:endmacro) command is found. The macro can be invoked simply by using its name as if it were a command. In the above example, if `FOO_LIB` was not found then a message would be displayed indicating the error condition.
 
 The [`macro`](https://cmake.org/cmake/help/latest/command/macro.html#command:macro) command also supports defining macros that take variable argument lists. This can be useful if you want to define a macro that has optional arguments or multiple signatures. Variable arguments can be referenced using `ARGC` and `ARGV0`, `ARGV1`, etc., instead of the formal parameters. `ARGV0` represents the first argument to the macro; `ARGV1` represents the next, and so forth. You can also use a mixture of formal arguments and variable arguments, as shown in the example below.
-```sh
+```cmake
 # define a macro that takes at least two arguments
 # (the formal arguments) plus an optional third argument
 macro(assert TEST COMMENT)

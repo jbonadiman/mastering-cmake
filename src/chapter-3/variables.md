@@ -6,7 +6,7 @@ A number of useful variables are automatically defined by CMake and are discusse
 All CMake variables are stored internally as strings although they may sometimes be interpreted as other types.
 
 Use the [`set`](https://cmake.org/cmake/help/latest/command/set.html#command:set) command to set variable values. In its simplest form, the first argument to [`set`](https://cmake.org/cmake/help/latest/command/set.html#command:set) is the name of the variable and the rest of the arguments are the values. Multiple value arguments are packed into a semicolon-separated list and stored in the variable as a string. For example:
-```sh
+```cmake
 set(Foo "")      # 1 quoted arg -> value is ""
 set(Foo a)       # 1 unquoted arg -> value is "a"
 set(Foo "a b c") # 1 quoted arg -> value is "a b c"
@@ -14,7 +14,7 @@ set(Foo a b c)   # 3 unquoted args -> value is "a;b;c"
 ```
 
 Variables may be referenced in command arguments using syntax `${VAR}` where `VAR` is the variable name. If the named variable is not defined, the reference is replaced with an empty string; otherwise it is replaced by the value of the variable. Replacement is performed prior to the expansion of unquoted arguments, so variable values containing semicolons are split into zero-or-more arguments in place of the original unquoted argument. For example:
-```sh
+```cmake
 set(Foo a b c)    # 3 unquoted args -> value is "a;b;c"
 command(${Foo})   # unquoted arg replaced by a;b;c
                   # and expands to three arguments

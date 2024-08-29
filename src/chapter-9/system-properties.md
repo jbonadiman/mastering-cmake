@@ -1,6 +1,6 @@
 # System Properties
 Although it is a common practice in C and C++ code to add platform-specific code inside preprocessor `ifdef` directives, for maximum portability this should be avoided. Software should not be tuned to specific platforms with `ifdefs`, but rather to a canonical system consisting of a set of features. Coding to specific systems makes the software less portable, because systems and the features they support change with time, and even from system to system. A feature that may not have worked on a platform in the past may be a required feature for the platform in the future. The following code fragments illustrate the difference between coding to a canonical system and a specific system:
-```sh
+```cmake
 // coding to a feature
 #ifdef HAS_FOOBAR_CALL
   foobar();
@@ -16,7 +16,7 @@ Although it is a common practice in C and C++ code to add platform-specific code
 #endif
 ```
 The problem with the second approach is that the code will have to be modified for each new platform on which the software is compiled. For example, a future version of SUN may no longer have the foobar call. Using the `HAS_FOOBAR_CALL` approach, the software will work as long as `HAS_FOOBAR_CALL` is defined correctly, and this is where CMake can help. CMake can be used to define `HAS_FOOBAR_CALL` correctly and automatically by making use of the [`try_compile`](https://cmake.org/cmake/help/latest/command/try_compile.html#command:try_compile) and [`try_run`](https://cmake.org/cmake/help/latest/command/try_run.html#command:try_run) commands. These commands can be used to compile and run small test programs during the CMake configure step. The test programs will be sent to the compiler that will be used to build the project, and if errors occur, the feature can be disabled. These commands require that you write a small C or C++ program to test the feature. For example, to test if the `foobar` call is provided on the system, try compiling a simple program that uses `foobar`. First write the simple test program (testNeedFoobar.c in this example) and then add the CMake calls to the CMakeLists file to try compiling that code. If the compilation works then `HAS_FOOBAR_CALL` will be set to true.
-```sh
+```cmake
 // --- testNeedFoobar.c -----
 
 #include <foobar.h>
@@ -26,7 +26,7 @@ main()
 }
 ```
 
-```sh
+```cmake
 # --- testNeedFoobar.cmake ---
 
 try_compile (HAS_FOOBAR_CALL
@@ -38,7 +38,7 @@ try_compile (HAS_FOOBAR_CALL
 Now that `HAS_FOOBAR_CALL` is set correctly in CMake, you can use it in your source code through the [`target_compile_definitions`](https://cmake.org/cmake/help/latest/command/target_compile_definitions.html#command:target_compile_definitions) command. Alternatively, it is possible to configure a header file. This is discussed further in the section called [How to Configure a Header File](./configure-header-file.md).
 
 Sometimes compiling a test program is not enough. In some cases, you may actually want to compile and run a program to get its output. A good example of this is testing the byte order of a machine. The following example shows how to write a small program that CMake will compile and run to determine the byte order of a machine.
-```sh
+```cmake
 // ---- TestByteOrder.c ------
 
 int main () {
@@ -53,7 +53,7 @@ int main () {
 }
 ```
 
-```sh
+```cmake
 # ----- TestByteOrder.cmake-----
 
 try_run(RUN_RESULT_VAR
@@ -67,7 +67,7 @@ try_run(RUN_RESULT_VAR
 The return result of the run will go into `RUN_RESULT_VAR`, the result of the compile will go into `COMPILE_RESULT_VAR`, and any output from the run will go into `OUTPUT`. You can use these variables to report debug information to the users of your project.
 
 For small test programs the [`file`](https://cmake.org/cmake/help/latest/command/file.html#command:file) command with the `WRITE` option can be used to create the source file from the CMakeLists file. The following example tests the C compiler to verify that it can be run.
-```sh
+```cmake
 file(WRITE
   ${CMAKE_BINARY_DIR}/CMakeTmp/testCCompiler.c
   "int main(){return 0;}"
@@ -113,7 +113,7 @@ There are several predefined try-run and try-compile modules available in CMake 
     Provides a macro that checks to see if a global variable exists by taking two arguments with the first being the variable to look for, and the second argument being the variable to store the result in. This macro will prototype the named variable and then try to use it. If the test program compiles then the variable exists. This will only work for C variables. This macro uses `CMAKE_REQUIRED_FLAGS` and `CMAKE_REQUIRED_LIBRARIES` if they are set.
 
 Consider the following example which shows a variety of these modules being used to compute properties of the platform. At the beginning of the example four modules are loaded from CMake. The remainder of the example uses the macros defined in those modules to test for header files, libraries, symbols, and type sizes respectively.
-```sh
+```cmake
 # Include all the necessary files for macros
 include(CheckIncludeFiles)
 include(CheckLibraryExists)

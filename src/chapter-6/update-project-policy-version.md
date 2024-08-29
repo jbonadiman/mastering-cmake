@@ -1,6 +1,6 @@
 # Updating the Project Policy Version
 After addressing all policy warnings and getting the project to build cleanly with the new CMake version one step remains. The policy version set at the top of the project should now be updated to match the new CMake version, just as in the one-shot approach described above. For example, after updating a project to build cleanly with CMake 3.20, users may update the top of the project with the line
-```sh
+```cmake
 cmake_minimum_required(VERSION 3.20)
 ```
 

@@ -1,6 +1,6 @@
 # Finding Packages
 Many software projects provide tools and libraries that are meant as building blocks for other projects and applications. CMake projects that depend on outside packages locate their dependencies using the [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html#command:find_package) command. A typical invocation is of the form:
-```sh
+```cmake
 find_package(<Package> [version])
 ```
 
@@ -9,7 +9,7 @@ where `<Package>` is the name of the package to be found, and `[version]` is an 
 The command operates in two modes: `Module` mode and `Config` mode. In `Module` mode, the command searches for a [find module](https://cmake.org/cmake/help/latest/manual/cmake-developer.7.html#manual:cmake-developer(7)): a file named `Find<Package>.cmake`. It looks first in the [`CMAKE_MODULE_PATH`](https://cmake.org/cmake/help/latest/variable/CMAKE_MODULE_PATH.html#variable:CMAKE_MODULE_PATH) and then in the CMake installation. If a find module is found, it is loaded to search for individual components of the package. Find modules contain package-specific knowledge of the libraries and other files they expect to find, and internally use commands like [`find_library`](https://cmake.org/cmake/help/latest/command/find_library.html#command:find_library) to locate them. CMake provides find modules for many common packages; see the [`cmake-modules(7)`](https://cmake.org/cmake/help/latest/manual/cmake-modules.7.html#manual:cmake-modules(7)) manual.
 
 The `Config` mode of [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html#command:find_package) provides a powerful alternative through cooperation with the package to be found. It enters this mode after failing to locate a find module or when explicitly requested by the caller. In Config mode the command searches for a `package configuration file`: a file named `<Package>Config.cmake` or` <package>-config.cmake` which is provided by the package to be found. Given the name of a package, the [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html#command:find_package) command knows how to search deep inside installation prefixes for locations like:
-```sh
+```cmake
 <prefix>/lib/<package>/<package>-config.cmake
 ```
 
