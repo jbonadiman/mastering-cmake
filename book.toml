@@ -5,3 +5,6 @@ text-direction = "ltr"
 multilingual = false
 src = "src"
 title = "Mastering CMake"
+
+[output.html]
+site-url = "/mastering-cmake/"
