@@ -83,3 +83,8 @@
     - [System Properties](./chapter-9/system-properties.md)
     - [How to Pass Parameters to a Compilation](./chapter-9/pass-parameters-to-compilation.md)
     - [How to Configure a Header File](./chapter-9/configure-header-file.md)
+
+- [Finding Packages](./chapter-10/README.md)
+    - [Built-in Find Modules](./chapter-10/builtin-find-modules.md)
+    - [Creating CMake Package Configuration Files](./chapter-10/creating-cmake-package-cfg.md)
+    - [CMake Package Registry](./chapter-10/cmake-package-registry.md)
