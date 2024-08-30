@@ -10,6 +10,8 @@ title = "Mastering CMake"
 site-url = "/mastering-cmake/"
 git-repository-url = "https://github.com/jbonadiman/mastering-cmake"
 git-repository-icon = "fa-github"
+additional-css = ["theme/pagetoc.css"]
+additional-js  = ["theme/pagetoc.js"]
 
 [output.html.print]
 page-break = false

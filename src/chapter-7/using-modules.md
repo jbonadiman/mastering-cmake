@@ -1,4 +1,0 @@
-# Using Modules
-Code reuse is a valuable technique in software development and CMake has been designed to support it. Allowing CMakeLists files to make use of reusable modules enables the entire community to share reusable sections of code. For CMake, these sections are called [`cmake-modules`](https://cmake.org/cmake/help/latest/manual/cmake-modules.7.html#manual:cmake-modules(7)) and can be found in the Modules subdirectory of your installation.
-
-A module’s location can be specified using the full path to the module file, or by letting CMake find the module by itself. CMake will look for modules in the directories specified by [`CMAKE_MODULE_PATH`](https://cmake.org/cmake/help/latest/variable/CMAKE_MODULE_PATH.html#variable:CMAKE_MODULE_PATH); if it cannot find it there, it will look in the Modules subdirectory. This way projects can override modules that CMake provides and customize them for their needs. Modules can be broken into a few main categories.

@@ -1,2 +1,0 @@
-# Policies
-Occasionally a new feature or change is made to CMake that is not fully backwards compatible with older versions. This can create problems when someone tries to use an old CMakeLists file with a new version of CMake. To help both end users and developers through such issues, we have introduced [`cmake-policies`](https://cmake.org/cmake/help/latest/manual/cmake-policies.7.html#manual:cmake-policies(7)). Policies are a mechanism for helping improve backwards compatibility and tracking compatibility issues between different versions of CMake.

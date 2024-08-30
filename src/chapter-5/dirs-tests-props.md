@@ -1,2 +1,0 @@
-# Directories, Tests, and Properties
-In addition to targets and source files, you may find yourself occasionally working with other objects such as directories and tests. Normally such interactions take the shape of setting or getting properties (e.g. [`set_directory_properties`](https://cmake.org/cmake/help/latest/command/set_directory_properties.html#command:set_directory_properties) or [`set_tests_properties`](https://cmake.org/cmake/help/latest/command/set_tests_properties.html#command:set_tests_properties)) from these objects.
