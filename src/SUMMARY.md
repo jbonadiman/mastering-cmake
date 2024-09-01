@@ -14,3 +14,4 @@
 - [Finding Packages](finding-packages.md)
 - [Custom Commands](custom-commands.md)
 - [Converting Existing Systems To CMake](converting-to-cmake.md)
+- [Cross Compiling With CMake](cross-compiling-with-cmake.md)
