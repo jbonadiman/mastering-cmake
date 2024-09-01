@@ -13,3 +13,4 @@
 - [System Inspection](system-inspection.md)
 - [Finding Packages](finding-packages.md)
 - [Custom Commands](custom-commands.md)
+- [Converting Existing Systems To CMake](converting-to-cmake.md)
