@@ -50,14 +50,20 @@ After a CMakeLists file has been created, CMake processes the text file and crea
 ### Running the CMake GUI
 CMake includes a Qt-based user interface that can be used on most platforms, including UNIX, Mac OS X, and Windows. The [`cmake-gui`](https://cmake.org/cmake/help/latest/manual/cmake-gui.1.html#manual:cmake-gui(1)) is included in the CMake source code, but you will need an installation of Qt on your system in order to build it.
 
-![Qt based CMake GUI](images/QtbasedCMakeGUI.png)
+<figure>
+  <img src="images/QtbasedCMakeGUI.png">
+  <figcaption>Figure 1: Qt based CMake GUI</figcaption>
+</figure>
 
 On Windows, the executable is named `cmake-gui.exe` and it should be in your Start menu under Program Files. There may also be a shortcut on your desktop, or if you built CMake from the source, it will be in the build directory. For UNIX and Mac users, the executable is named `cmake-gui` and it can be found where you installed the CMake executables. A GUI will appear similar to what is shown in Figure 1. The top two fields are the source code and binary directories. They allow you to specify where the source code is located for what you want to compile, and where the resulting binaries should be placed. You should set these two values first. If the binary directory you specify does not exist, it will be created for you. If the binary directory has been configured by CMake before, it will then automatically set the source tree.
 
 ### Running the ccmake Curses Interface
 On most UNIX platforms, if the curses library is supported, CMake provides an executable called [`ccmake`](https://cmake.org/cmake/help/latest/manual/ccmake.1.html#manual:ccmake(1)). This interface is a terminal-based text application that is very similar to the [`cmake-gui`](https://cmake.org/cmake/help/latest/manual/cmake-gui.1.html#manual:cmake-gui(1)). To run [`ccmake`](https://cmake.org/cmake/help/latest/manual/ccmake.1.html#manual:ccmake(1)), change directories into the directory where you want the binaries to be placed. Then run [`ccmake`](https://cmake.org/cmake/help/latest/manual/ccmake.1.html#manual:ccmake(1)) with the path to the source directory on the command line. This will start the text interface as shown in Figure 2.
 
-![ccmake running on UNIX](images/ccmakerunningonUNIX.png)
+<figure>
+  <img src="images/ccmakerunningonUNIX.png">
+  <figcaption>Figure 2: ccmake running on UNIX</figcaption>
+</figure>
 
 Brief instructions are displayed in the bottom of the window. If you hit the “c” key, it will configure the project. You should always configure after changing values in the cache. To change values, use the arrow keys to select cache entries, and hit the enter key to edit them. Boolean values will toggle with the enter key. Once you have set all the values as you like, you can hit the “g” key to generate the Makefiles and exit. You can also hit “h” for help, “q” to quit, and “t” to toggle the viewing of advanced cache entries.
 

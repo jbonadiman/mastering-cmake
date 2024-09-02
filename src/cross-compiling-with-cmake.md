@@ -219,7 +219,7 @@ Now let’s actually start with the cross-compiling. The first step is to instal
 
 There are many different approaches and projects that deal with cross-compiling for Linux, ranging from free software projects working on Linux-based PDAs to commercial embedded Linux vendors. Most of these projects come with their own way to build and use the respective toolchain. Any of these toolchains can be used with CMake; the only requirement is that it works in the normal file system and does not expect a “sandboxed” environment, like for example the Scratchbox project.
 
-An easy-to-use toolchain with a relatively complete target environment is the Embedded Linux Development Toolkit (<http://www.denx.de/wiki/DULG/ELDK>). It supports ARM, PowerPC, and MIPS as target platforms. ELDK can be downloaded from <ftp://ftp.sunet.se/pub/Linux/distributions/eldk/>. The easiest way is to download the ISOs, mount them, and then install them:
+An easy-to-use toolchain with a relatively complete target environment is the Embedded Linux Development Toolkit (<https://www.denx.de/wiki/DULG/ELDK>). It supports ARM, PowerPC, and MIPS as target platforms. ELDK can be downloaded from <ftp://ftp.sunet.se/pub/Linux/distributions/eldk/>. The easiest way is to download the ISOs, mount them, and then install them:
 ```
 mkdir mount-iso/
 sudo mount -tiso9660 mips-2007-01-21.iso mount-iso/ -o loop
@@ -379,7 +379,7 @@ Linking CXX executable HelloTools
 Obviously CMake found the correct zlib and also libTools.so, which had been installed in the previous step.
 
 ## Cross-Compiling for a Microcontroller
-CMake can be used for more than cross-compiling to targets with operating systems, it is also possible to use it in development for deeply-embedded devices with small microcontrollers and no operating system at all. As an example, we will use the Small Devices C Compiler (<http://sdcc.sourceforge.net>), which runs under Windows, Linux, and Mac OS X, and supports 8 and 16 Bit microcontrollers. For driving the build, we will use MS NMake under Windows. As before, the first step is to write a toolchain file so that CMake knows about the target platform. For sdcc, it should look something like this
+CMake can be used for more than cross-compiling to targets with operating systems, it is also possible to use it in development for deeply-embedded devices with small microcontrollers and no operating system at all. As an example, we will use the Small Devices C Compiler (<https://sdcc.sourceforge.net>), which runs under Windows, Linux, and Mac OS X, and supports 8 and 16 Bit microcontrollers. For driving the build, we will use MS NMake under Windows. As before, the first step is to write a toolchain file so that CMake knows about the target platform. For sdcc, it should look something like this
 ```cmake
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_C_COMPILER "c:/Program Files/SDCC/bin/sdcc.exe")
