@@ -18,3 +18,4 @@
 - [Packaging With CPack](packaging-with-cpack.md)
 - [Testing With CMake and CTest](testing-with-cmake-ctest.md)
 - [CDash](cdash.md)
+- [CMake Tutorial](cmake-tutorial.md)
